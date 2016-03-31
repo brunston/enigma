@@ -1,4 +1,5 @@
-#attempting to find key collisions for multiplicative
+#attempting to find key collisions for multiplicative cipher
+#of format x -> (x*n) mod k
 
 k_length = input("k length?")
 k_length = int(k_length)
