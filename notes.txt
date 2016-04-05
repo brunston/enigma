@@ -1,0 +1,293 @@
+--MA 593 notes, Brunston Poon--
+
+-------------
+in class 0401
+-------------
+
+Implication:
+    if, only if, and iff (if and only if)
+
+eg1:
+    A = "pet is a cat"
+    B = "pet is an animal"
+
+    A -> B (A implies A)
+    B <- A (B implied by A)
+    B is necessary for A
+    A is sufficient for B
+    A only if B (A is true only when B is true)
+    B if A (whenever A is true, B is true also --> If A is true, then B is true)
+
+    A = "y(x) is defined for all reals and dy/dx = y"
+    B = "y = c * e^x"
+    A <-> B (arrows mean iff)
+    B <-> A (arrows mean iff)
+    A iff B
+---
+
+eg2:
+    True: an even number is prime iff it is 3
+    False: a odd number is prime iff it is 3
+    False: divisible by 4 is necessary for div by 2
+    True: div by 4 is sufficient for div by 3
+---
+
+Modular Arithmetic:
+
+Definition--
+    Let a, b, n be integers with n > 0. We say:
+
+    a is congruent to b mod n (a === b mod n)
+
+    iff a and b differ by a multiple of n.
+    Therefore, "a === b mod n" is the same as a - b = kn for some k
+
+eg3:
+    12 === 2 mod 10
+    because 12 - 2 = 1 * 10
+---
+
+NB Proposition--
+    a === b mod n <-> a = b + kn
+
+eg4:
+    4 === 30 mod 26 because 4 = 30 + (-1)*26
+    30 === 4 mod 26 because 30 = 4 + 1*26
+---
+
+Proof that congruence is transitive:
+Proposition--
+    if a, b, c, n are integers with n>0, then
+    1) a === a mod n
+    2) a === b mod n implies b === a mod n
+    3) a === b mod n & b === c mod n implies a === c mod n
+
+Proof for 3--
+    Since a === b mod n: a = b + kn
+    Since b === c mod n: b = c + ln
+    
+    We need to show there is some integer j such that a = c + jn
+
+    a = [c + ln] + kn
+    a = c + (l + k)n
+    j = l + k
+
+Definition--
+    Reduce x % n
+    means find a number in {0,1,2...n-1} congruent to x mod n.
+
+eg5:
+    Reduce 32 % 26
+    answer: 6
+
+    Reduce 57 % 25
+    answer: 7 (NOT 32)
+
+    Reduce 1002 + 1003 % 1000
+    answer: 5
+---
+
+Proposition--
+    If a_1 === a_2 mod n & b_1 === b_2 mod n
+    
+    1) a_1 + b_1 mod n === a_2 + b_2 mod n
+    2) a_1 - b_1 mod n === a_2 - b_2 mod n
+    3) a_1 * b_1 mod n === a_2 * b_2 mod n
+
+homework--
+    prove 1 and 3 on hw from above proposition
+
+Z is the group of integers
+
+Definition--
+    Z_n is the set of integers {0,1,2,3,...n-1} along with 2 operations:
+        addition mod n
+        multiplication mod n
+    where we reduce mod n
+
+eg 6:
+    multiplication table for Z_4
+
+    x|0 1 2 3 
+    =========
+    0|0 1 2 3
+    2|0 2 0 2
+    3|0 3 2 1
+
+    (could also make an addition table)
+---
+
+-------------
+in class 0404
+-------------
+
+language involving mod--
+    2x5=10 in Z
+    2x5===10 mod 10 (in Z)
+    2x5=0 in Z_10
+---
+
+affine encryption--
+    similar to caesar but more general
+    
+    for an alphabet with n letters
+        c = ciphertext letter
+        p = plaintext letter
+        key: a,b in Z_n
+        ciphertext = a*p + b in Z_n (this type of function is affine)
+---
+
+eg1--
+    n = 26 letters
+    k = (7,19)
+    p = stpauls
+    c = PWUTDSP
+        eg1.2 for 's', s = 18, 7*18 = 22, 22 + 19 = 15, 15 -> P
+---
+
+NB: affine encryption scheme is monoalphabetic
+    (same plaintext letter always encrypts to the same ciphertext letter)
+
+affine decryption--
+    we need to solve equation c = a*b + b in Z_n for p
+        eg1.3 solve for p: 15 = 7*p + 19 in Z_26
+---
+
+solving affine equations in Z_n--
+    eg2--
+        eq in z_15 | solutions for x
+        --------------------------------
+        5x = 10    | x = 2, 5, 8, 11, 14
+        5x = 3     | no solution
+        6x = 10    | no solution
+        6x = 3     | x = 3, 8, 13
+        7x = 10    | x = 10
+        7x = 3     | x = 9
+        8x = 6     | x = 12
+        8x = 13    | x = 11
+        9x = 6     | x = 4,9,14
+        9x = 13    | none
+    ---
+
+Over |R, to solve 7x = 5, we multiply by 7^(-1)
+The inverse is useful because x*x^(-1) = 1
+
+definition--
+    In Z_n, b is the inverse of a if ab = 1
+    Written as b = a^(-1)
+---
+
+eg3--
+    in Z_15:
+    inv(7) = 13
+    inv(8) = 2
+    inv(9) DNE
+    inv(10) DNE
+    inv(11) = 11
+---
+
+question: are inverses unique? yes. (we still need to prove it)
+
+proposition--
+    In Z_n if inv(a) exists, then the equation ax = b has exactly one solution.
+---
+proof--
+    The solution is
+    inv(a)*a*x = inv(a)*b
+    x = inv(a)*b
+---
+
+theorem--
+    inv(a) exists in Z_n iff gcd(a,n) = 1
+        NB: gcd(a,n) = 1 is also referred to as "a and n are relatively prime".
+---
+proof--
+    assume inv(a) exists, meaning for some b in Z_n
+    ab = 1 in Z_n
+    ab === 1 mod n in |Z
+    ab = 1 + kn for some int k
+    ab - kn = 1 for some int k
+    suppose d is a common divisor of a and n
+    so d divides ab, d divides kn, so d divides their difference
+    so d divides 1, so d = 1
+---
+
+euclidean algorithm--
+    for calculating the gcd of two numbers
+    eg4--
+        find gcd(88,244)
+        244 = 2*88 + 68
+        88 = 1*68 + 20
+        68 = 3*20 + 8
+        20 = 2*8 + 4 <- gcd is this number
+        8 = 2*4 + 0
+
+        gcd is last non-zero remainder
+    ---
+
+    eg5--
+        find gcd(663,10248)
+        10248 = 15*663 + 303
+        663 = 2*303 + 57
+        303 = 5*57 + 18
+        57 = 3*18 + 3
+        18 = 6*3 + 0
+
+        gcd = 3
+    ---
+
+    eg6--
+        does inv(23) exist in Z_32?
+        32 = 1*23 + 9
+        23 = 2*9 + 5
+        9 = 1*5 + 4
+        5 = 1*4 + 1
+        4 = 4*1 + 0
+
+        gcd = 1
+        yes, inv(23) exists. but what is it?
+    ---
+---
+
+extended euclidean algorithm--
+    good for finding modular inverses
+    eg7--
+        find inv(23) in Z_32
+        1) do euclidean algorithm
+        2)
+            1 = 5 - 1*4
+              = 5 - 1*(9 - 1*5)
+              = 5 - 1*9 + 1*5
+              = 2*5 - 1*9
+              = 2*(23-2*9) - 1*9
+              = 2*23 - 4*9 - 1*9
+              = 2*23 - 5*9
+              = 2*23 - 5*(32-23)
+              = 2*23 - 5*32 + 5*23
+              = 7*23 - 5*32
+            1 (mod 32) = (7*23 - 5*32) (mod 32)
+            1 = 7*23
+            inv(23) = 7
+    ---
+---
+
+eg8--
+    find inv(11) in Z_25 then solve 11x = 17
+    25 = 2*11 + 3
+    11 = 3*3 + 2
+    3 = 1*2 + 1
+    2 = 1*1 + 0
+    yes, inv(11) exists.
+    1 = 3 - 1*2
+      = 3 - 1*(11-3*3)
+      = 3 - 1*11 + 3*3
+      = 4*3 - 1*11
+      = 4*(25 - 2*11) - 1*11
+      = 4*25 - 8*11 - 1*11
+      = 4*25 - 9*11
+    1 = -9*11
+    inv(11) = -9 = 16
+
+    11x = 17
+    x = 16 * 17 = 22
+---
