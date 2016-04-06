@@ -5,16 +5,14 @@ import math
 user_z = int(input("Choose a Z int: "))
 user_x = int(input("Choose an X int: "))
 
-def gcd(x,z):
-    shift = True
+def gcd(x,y):
     stor = 0
-    while shift == True:
-        stor = z
-        z = x % z
-        x = stor
-        if z == 0:
-            #print("second-to-last, {0}".format(stor))
-            shift = False
+    while y !=0:
+        stor = y # store old value of y
+        y = x % y # new y value is now the remainder of x and y
+        x = stor # x becomes old value of y
+    
+    #print("second-to-last, {0}".format(stor))
     return x
 
 print("\ngcd of {0},{1}: {2}\n\n".format(user_x,user_z,gcd(user_x,user_z)))

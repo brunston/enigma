@@ -291,3 +291,68 @@ eg8--
     11x = 17
     x = 16 * 17 = 22
 ---
+
+-------------
+in class 0406
+-------------
+
+Uses for euclidean algorithm--
+    for finding gcd(a,b)
+Uses for extended euclidean algorithm--
+    for finding integers x & y such that
+        ax+by = gcd(a,b)
+    i.e. good for finding inverses mod n
+---
+---
+
+eg1--
+    14*x = 6 in Z_92
+    gcd(14,92) = 2
+    try using extended euclidean starting with 2 instead of 1?
+
+    euclidean--
+        92 = 6*14 + 8
+        14 = 1*8 + 6
+        8 = 1*6 + 2
+        6 = 3*2 + 0
+    ---
+    extended euclidean--
+        2 = 8 - 1*6
+          = 8 - 1*(14 - 1*8)
+          = 2*8 - 1*14
+          = 2*(92 - 6*14) - 1*14
+          = 2*92 - 13*14
+          answer in Z_92
+        2 = -13 * 14
+        2 = 72 * 14
+    ---
+    14*x' = 2
+    x' = 70
+    14*(3x') = 2*3 = 6 (original equation we wanted to find soln for)
+    x = 3x'
+      = 53
+    14*53 = 6 in Z_92
+    14*(53+46) = 6
+    14*53 + 14*46 = 6
+---
+
+applying ext.euclidean to affine encryption--
+    affine encryption
+        c = a*p + b
+        where k = (a,b)
+    affine decryption
+        p = inv(a)(c-b)
+    good keys--
+        we want a unique decryption
+        need inv(a) to exist
+            in Z_n
+        inv(a) exists <-> gcd(a,n) = 1
+    ---
+---
+
+theorem--
+    ax = b in Z_n
+    Unique solution x if gcd(a,n) = 1
+    A solution exists iff gcd(a,n) divides b
+        If it does, solve ax' = gcd(a,n) first.
+---
