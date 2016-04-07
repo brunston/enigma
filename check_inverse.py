@@ -7,4 +7,5 @@ z = int(input("z (int)? "))
 if ((x*x_inv) % z) == 1:
     print("Inverse is valid")
 else:
+    print("value of (x*x_inv)%z: {0}".format((x*x_inv)%z))
     print("Inverse is not valid")
