@@ -356,3 +356,13 @@ theorem--
     A solution exists iff gcd(a,n) divides b
         If it does, solve ax' = gcd(a,n) first.
 ---
+
+-------------
+in class 0407
+-------------
+
+Matrices over Z_
+Notes in AFK notebook
+---
+
+
