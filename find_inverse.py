@@ -4,7 +4,7 @@ z = int(input("z (int)? "))
 a = int(input("a (int)? "))
 
 for i in range(z):
-    potential_inverse = (a*i) % 26
+    potential_inverse = (a*i) % z
 
     if (potential_inverse)==1:
         print("gcd is 1. Inverse: {0}".format(i))
