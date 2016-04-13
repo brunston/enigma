@@ -26,7 +26,7 @@ eg1:
 ---
 
 eg2:
-    True: an even number is prime iff it is 3
+    True: an even number is prime iff it is 2
     False: a odd number is prime iff it is 3
     False: divisible by 4 is necessary for div by 2
     True: div by 4 is sufficient for div by 3
