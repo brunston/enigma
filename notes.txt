@@ -361,8 +361,92 @@ theorem--
 in class 0407
 -------------
 
-Matrices over Z_
+Matrices over Z_--
 Notes in AFK notebook
 ---
 
+-------------
+in class 0414
+-------------
+
+One-time pads (OTP)--
+    weakness of viginere is that the key repeats; allowing for frequency analysis
+    OTP is viginere with the key as long as the message
+    
+    eg1--
+        p = hail caes ar
+        k = kgtx uhiy cv
+        c = rgbi whmq cm
+    ---
+
+    THIS IS THE ONLY PERFECTLY SECURE ENCRYPTION SCHEME
+
+---
+
+Binary OTP--
+    eg2--
+        p = sps # to binary
+        b = 10010 01111 10010
+        k = 00011 10001 01100
+        c = 10001 11110 11110
+        c = r!!
+    ---
+
+    Note: we treat binary as z_2
+    and addition in z_2:
+    xor (+)
+---
+
+Private key crypto--
+    alice and bob--
+        alice =
+            [ plaintext, key]
+        [ encryption algorithm ] -> [ ciphertext ]
+        [ decryption algorithm ] -> [ plaintext ]
+        bob = 
+            [ plaintext, key]
+    ---
+
+    how do alice and bob share the key in the first place?
+        > the importance of key distribution
+---
+
+Discrete logarithm--
+    in z_n, x is called a discrete log of y (base g) if
+        
+        y = g^x 
+
+    that is, y= g^x <-> x = L_g(y)
+    
+    eg3--
+        6^5 = 10 in z_11
+        so 5 is dlog (base 6) of 10
+        5 = L_6(10) in Z_11
+    ---
+
+    in z_7, 3^x is a cyclic group (where g^x contains every element in z_7)
+        and therefore a GENERATOR
+    4^x is not a cyclic group and therefore NOT A GENERATOR
+    
+    eg4--
+        Solve 21^x = 130 mod 179
+        Soln: NOPE
+    ---
+
+    THERE IS NO KNOWN METHOD FOR CALCULATING DISCRETE LOGS
+    WHICH IS SIGNIFICANTLY BETTER THAN BRUTE FORCE
+
+    however:
+    eg5--
+        Verify 21^73 = 130 mod 179
+        21^72 * 21 = 130 mod 179
+        (21^2)^36 * 21 = 130 mod 179
+        i.e. simplify parens mod 179 to make calculations easier.
+    ---
+
+    BUT IT IS EASIER TO VERIFY DISCRETE LOGS.
+---
+
+
+    
 
