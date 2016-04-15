@@ -448,5 +448,78 @@ Discrete logarithm--
 ---
 
 
-    
+-------------
+in class 0415
+-------------
 
+if there's an obvious way to calculate something, there's often a more
+clever, faster way to do it--
+    gcd(big1, big2)
+        option 1: factor (slow)
+        option 2: euclidean algorithm (much faster)
+    inv(big) (mod big)
+        option 1: table/bruteforce (slow)
+        option 2: extended euclidean algorithm (much faster)
+    Diffie-Hellman
+        option 1: solve a or b, but discrete logs are (very hard)
+        option 2: g^a and g^b -> g^(ab) without calculating a or b (not found)
+
+Diffie-Hellman Key Exchange Protocol--
+    Goal: Alice and Bob exchange shared secret key over public communication channels
+
+    Setup: Alice and Bob agree publicly on a large prime p and a base g
+
+    (the following happens at the same time)--
+    Alice--
+        1. Privately pick a in z_p
+        2. Calculate A = g^a (mod p)
+        3. Send A to Bob
+        4. Calculate K = B^a in z_p
+                       = g^(ba)
+    ---
+    Bob--
+        1. Privately pick b in z_p
+        2. Calculate B = g^b (mod p)
+        3. Send B to Alice
+        4. Calculate K = A^b in z_p
+                       = g^(ab)
+    ---
+    Eve--
+        Knows p, g, A, B, and wants to know K.
+    ---
+
+    eg1--
+        Public: (g,p)=(11,31)
+        Alice--
+            1. a = 9
+            2. A = 11^9 mod 31
+                 = (11^2)^4 * 11 mod 31
+                 = 28^4 * 11 mod 31
+                 = (28^2)^2 * 11 mod 31
+                 = 9^2 * 11 mod 31
+                 = 19 * 11 mod 31
+                 = 23
+            3. SWAP A for B
+            4. B^a = 16^9 mod 31
+                   = 2
+        ---
+        Bob--
+            1. b = 12 
+            2. B = 11^12 mod 31
+                 = 11^9 * 11^3
+                 = 23 * 28 * 11
+                 = 16
+            3. SWAP B for A
+            4. A^b = 23^12 mod 31
+                   = 2
+        ---
+        Eve--
+            Knows (A,g,p) = (23,11,31)
+            and 23 = 11^a mod 31
+            11^a = 23
+            11^b = 16
+            11^a*11^b != 11^(ab)
+                      = 11^(a+b)
+        ---
+    ---
+---
