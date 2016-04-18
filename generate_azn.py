@@ -6,14 +6,15 @@ a = int(input("a for a*Z_n (integer a)?"))
 z_n = []
 az_n = []
 for i in range(n):
+    # standard set z_n
     z_n.append(i)
 
 for x in range(n):
     value = (a*x) % n
-    if value not in az_n:
-        az_n.append(value)
+    # find ax in z_n
+    az_n.append(value)
 
-az_n = sorted(az_n)
+#az_n = sorted(az_n)
 
 print("Z_n: {0}".format(z_n))
 print("a*Z_n: {0}".format(az_n))
