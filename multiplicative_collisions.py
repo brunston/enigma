@@ -1,5 +1,6 @@
-#attempting to find key collisions for multiplicative cipher
-#of format x -> (x*n) mod k
+# attempting to find key collisions for multiplicative cipher
+# of format x -> (x*n) mod k
+# brupoon
 
 k_length = input("k length?")
 k_length = int(k_length)

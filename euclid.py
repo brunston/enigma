@@ -1,4 +1,5 @@
 # euclid's algorithm for GCD
+# brupoon
 
 import math
 

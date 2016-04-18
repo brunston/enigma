@@ -1,5 +1,6 @@
-#finding trigraphs in a given input file.
+# finding trigraphs in a given input file.
 # requires input.txt to contain wanted input
+# brupoon
 
 input("please press enter if you have the input located in current wd as input.txt")
 f = open('input.txt', 'r')

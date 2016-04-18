@@ -1,5 +1,5 @@
-#helper with alphabet to number conversion and mod math
-#brupoon
+# helper with alphabet to number conversion and mod math
+# brupoon
 
 
 def caesar(string, rot):

@@ -1,4 +1,5 @@
-#check to see if an inverse in Z is valid:
+# check to see if an inverse in Z is valid:
+# brupoon
 
 x = int(input("x (int)? "))
 x_inv = int(input("x inverse (int)? "))

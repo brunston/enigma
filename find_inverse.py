@@ -1,4 +1,5 @@
-#BRUTE FORCE find the inverse of a given number a in z
+# BRUTE FORCE find the inverse of a given number a in z
+# brupoon
 
 z = int(input("z (int)? "))
 a = int(input("a (int)? "))
