@@ -523,3 +523,19 @@ Diffie-Hellman Key Exchange Protocol--
         ---
     ---
 ---
+
+-------------
+in class 0418
+-------------
+
+see AFK notebook
+
+---
+
+-------------
+in class 0420
+-------------
+
+see AFK notebook
+
+---
